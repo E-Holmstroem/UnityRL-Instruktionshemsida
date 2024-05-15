@@ -1,0 +1,183 @@
+Alla lektioner, ladda ner unity för att kunna visa i programmet
+
+försök skaffa 3d rendering som kan snurras på hemsidan
+
+sticky navbar som minksar till en dropdown när det liten skärm / portrait
+
+Göra finare bland instruktioner
+
+
+
+#Instruktioner av Thomas 
+
+Webbutveckling 2 - Instruktionshemsida
+
+Ämne RL
+
+Gör egna övningar som du skriver instruktioner till så andra kan använda dem. (Om
+du inte kommer på någon övning kan du söka på internet och ”skriva av” någon
+annans instruktioner).
+För betygen C, B och A ska du göra egna övningar. Minst två övningar per sida.
+Din sida ska innehålla 1 startsida, minst 3 interna undersidor, 1 kontaktformulär,
+1 sida med upphovsrätt.
+
+Sida 1 Startsida
+• Rubrik som du gör själv i Photoshop, 2D-grafik, 3D grafik eller animationer
+• I inledningstexten skriver du om varför du gör sidan ”skolprojekt”, syfte, mål och målgrupp
+• Ansvarig utgivare, senast uppdaterad och e-mail i sidfot
+• Länkar till övriga sidor
+• Externa länkar till andra sidor inom samma ämne
+
+Sida 2–4 minst 3 sidor med instruktioner
+• Bilder och instruktioner. Minst 3 instruktioner ska finnas, för högre betyg C, B och A minst 6
+instruktioner. Instruktionerna ska vara utformade med bildbeskrivning och punktlista där
+besökaren kan lära sig göra likadant som du gjort.
+
+Sida 5 Formulär
+• Ett formulär där man kan fylla i namn, adress, telefon, e-mail och även skriva lite
+kommentarer om sidan.
+
+Sida 6 Upphovsrätt
+• Skriv lite om upphovsrätt och andra bestämmelser
+• Skriv gärna vad som gäller de instruktioner som du skapat.
+• OBS! Glöm inte att ha copyright på de bilder du skapat själv!!
+
+2
+
+Tänk på att..............
+• Första sidan ska ALLTID heta index.html
+• Namnge alla sidor med max 8 tecken, små bokstäver, inga mellanslag, använd inte å, ä eller ö
+• Skapa en ny mapp som du döper till samma som vad sidan handlar om, spara alla bilder och
+dokument i denna mapp.
+• Optimera dina bilder i Photoshop. Optimera är att spara bilden i ett filformat som visas i en
+upplösning som går snabbt att ladda ner men som ändå visar bilden tydligt.
+• Spara bilderna med filformatet .gif, .jpg eller png – se övningen ”Spara för webben”.
+• I arbetet utvecklar eleven kod som med gott resultat följer standarder och som
+omfattar flera tekniker för märkspråk och stilmallar där eleven i omfattande
+utsträckning använder tekniker för att generera stilmallskod
+• Bygg gärna upp sidan i layout-tabeller eller skikt som du sedan konverterar till tabell. Skriv in
+tabellen i procent så visas sidan procentuellt till den upplösning användaren har i sin dator.
+• Styr sidan med externa CSS mallar
+Rubriker
+Kraven på webbrubriker skiljer sig från kraven på tidningsrubriker, eftersom användningssätten är
+så olika. De 2 avgörande skillnaderna är
+• Webbrubriker visas ofta utanför sitt sammanhang i listor över artiklar, i sökmotorers träfflistor,
+i webbläsarnas listor över favoriter osv. Sökmotorernas träffar kan avse vilket ämne som helst,
+och då har användarna inte hjälp av sammanhanget när de tolkar rubriken.
+• Även om rubriken visas i ett sammanhang med relaterat innehåll, så medför svårigheterna med
+att läsa online, och den begränsade information man kan snappa upp när man skummar en
+webbsida, ändå att det kan vara svårt att tolka rubriken utifrån den omgivande informationen. I
+ett fönster på webben visas mycket mindre information, och den är dessutom svårare att läsa.
+När användare ögnar igenom listor över artiklar på en hemsida eller pressrelease-sida, tittar de
+oftast bara på de markerade rubrikerna och struntar i sammanfattningarna.
+På grund av dessa omständigheter måste webbrubrikerna vara begripliga utanför sitt
+sammanhang.
+• Tänk på att: förklara vad sidan handlar om. Rubriken ska vara en kort sammanfattning av
+innehållet.
+• Skriv klart och tydligt, inga ordvitsar, fyndiga formuleringar eller ironiska rubriker.
+• Strunta i inledningar som En, Ett, Den och Det. Ju kortare rubrik, desto lättare att förstå.
+• Börja inte alla sidrubriker med samma ord. Då blir de svåra att skilja åt i en lista.
+Färger
+• Använd färger som ger en hög kontrast mellan text och bakgrund. Optimal läsbarhet kräver
+svart text mot vit bakgrund (så kallad positiv text), vit text mot svart bakgrund (negativ text) är
+nästan lika läsbar.
+• Använd enfärgade bakgrunder eller bakgrunder med mycket diskret mönster. Bakgrundsbilder
+stör ögats förmåga att urskilja bokstävernas konturer och ordens utsträckning.
+
+3
+
+Teckensnitt
+• Använd tillräckligt stora teckensnitt, så att även personer med nedsatt syn kan läsa texten.
+Finstilt text bör endast användas i fotnoter och notiser om frånsägande av ansvar – texter som
+få personer bryr sig om att läsa.
+• Använd ett San serifft teckensnitt som Verdana, Arial, Helvetica m fl.
+• Låt texten vara stilla. Rörlig, blinkande eller pulserande text är mycket svårare att läsa än
+vanlig.
+• Nästan all text bör vara vänsterjusterad. Om ögat har en tydlig utgångspunkt går det mycket
+snabbare att skumma texten, jämfört med om den är centrerad eller högerjusterad. Man kan
+centrera eller högerjustera vissa avsnitt för effektens skull, men aldrig hela textblock. Även
+tabeller är mycket lättare att läsa igenom om det första ordet i varje cell är vänsterjusterat
+utefter en rak linje.
+Använd aldrig enbart VERSALER=stora bokstäver. Om du vill ha enbart stora bokstäver ska du
+använda KAPITÄLER=stora bokstäver men hälften så höga, de är lättare att läsa.1
+
+1
+Jakob Nielsen, Användbar webbdesign, Liber
+
+4
+
+Syftet med sidan
+Att utveckla färdigheter i att skapa och publicera webbsidor samt få en vana att använda de
+verktyg och tekniker som gör att du i framtiden kan skapa mer avancerade webbsidor. Kunna
+anpassa utformningen av en webbplats för en tänkt målgrupp såväl innehållsmässigt som tekniskt.
+Uppgift
+I detta moment ska du skapa en pedagogisk webbplats som uppfyller kriterierna nedan
+
+För betyg E har webbplatsen
+• Ett pedagogiskt innehåll som följer skolans regler, ej omoraliska ämnen – god praxis.
+• Eleven gör en enkel projektplan för en tänkt produkt. Utifrån projektplanen utvecklar eleven i
+samråd med handledare produkten, där logiker som styr innehåll, design och beteende i
+begränsad utsträckning är åtskiljda
+• Ett tydligt beskrivet syfte och mål, se sidan 5 i detta häfte
+• Publiceras på Internet – lägg upp sidan på internet (valfri plats).
+• I arbetet utvecklar eleven kod som med tillfredsställande resultat följer standarder och som
+omfattar några tekniker för märkspråk och stilmallar. Dessutom väljer och anger eleven
+lämplig teckenkodning. I arbetet bearbetar eleven med tillfredsställande resultat enkel text,
+bild och eventuell annan media, så att de blir anpassade för att fungera i produkten.
+• Eleven utvecklar med tillfredsställande funktionalitet inom något eller några av områdena
+domskript, interaktiv 2D-grafik, 3D-grafik eller animationer.
+• Bilder med textbeskrivning, alternativtexter och enklare animeringar
+• När arbetet är utfört gör eleven en enkel dokumentation av de moment som har utförts samt
+utvärderar med enkla omdömen sitt arbete och resultat.
+
+För betyg C har du också
+• Ett innehåll och en utformning som väl anpassats till syfte och målbeskrivning samt vald
+målgrupp. Gör en genomarbetad projektplan i samråd med läraren
+• Egenhändigt skapade bilder och animeringar som anpassats för visning på skärm
+• Bilder och media med alternativa format, optimering och tillgänglighet
+• Gör en noggrann dokumentation av de moment som har utförts samt utvärderar med
+nyanserade omdömen sitt arbete och resultat. I utvärderingen resonerar eleven kring
+eventuella avvikelser samt motiverar översiktligt de val som har gjorts
+Produkten är av god kvalitet och följer etablerad god
+praxis. Detta kontrollerar eleven både manuellt och
+med flera tester. Eleven testar produkten på flera
+plattformar, inklusive traditionella datorer och mobila
+enheter, samt optimerar bilder och andra mediafiler
+för att åstadkomma snabb överföring och vidtar
+åtgärder för att reducera antalet överföringar per sida.
+Dessutom bygger eleven en webbplats som med gott
+resultat följer grundläggande principer för
+tillgänglighet och kontrollerar detta med
+automatiserade tester och simuleringar.
+
+5
+
+För betyg A har du också
+• Egna bilder och animeringar, ljud och video
+• Gör en genomarbetad projektplan, vid behov reviderar eleven planen
+• Använder flera tekniker för märkspråk och stilmallar
+• Kvalitetssäkring av applikationens funktion och validering av kodens kvalitet
+• Produkten är av god kvalitet när det gäller funktion vilket eleven kontrollerar med hjälp
+av flera tester, även manuella.
+
+• Utvecklar med gott resultat funktionalitet inom något av områdena domskript, interaktiv 2D-
+grafik, 3D-grafik eller animationer
+
+• Gör en noggrann och utförlig dokumentation av de moment som har utförts med koppling
+till generella principer och testresultat samt utvärderar med nyanserade omdömen sitt arbete
+och resultat och ger förslag på hur arbetet kan förbättras. I utvärderingen resonerar eleven
+kring eventuella avvikelser samt motiverar utförligt de val som har gjorts.
+• Kvalitetssäkring av applikationens funktion
+och validering av kodens kvalitet
+HTML W3C validator: http://validator.w3.org/
+CSS W3C validator: http://jigsaw.w3.org/css-validator/
+
+Syfte, mål och målgrupp + upphovsrätt
+• Syfte = Varför du gör sidan.
+• Mål = Målet med sidan, vad vill du åstadkomma?
+• Målgrupp = Vem är sidan riktad mot?
+• Upphovsrätt för bilder, musik och video
+
+Sök och läs på internet om syfte, mål, målgrupp och upphovsrätt!
+
+Lycka till Thomas Fridén

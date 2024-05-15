@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>UnityRL</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="../style.css">
+        <link rel="icon" type="image/x-icon" href="../Bilder/rl.png">
+
+        <!--Google fonts-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+        <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+        
+    </head>
+    <body>
+        <header>
+            <h1>II: Övrig mjukvara</h1>
+            <nav>
+                <ul>
+                    <li><a href="../index.html">Hem</a></li>
+                    <li><a href="lek1.html">I: Installation av Unity</a></li>
+                    <li><a href="lek2.html">II: Övrigt mjukvara</a></li>
+                    <li><a href="lek3.html">III: Stegvis konfiguration</a></li>
+                    <li><a href="lek4.html">IV: Grundläggande kodning</a></li>
+                    <li><a href="lek5.html">V: Miljöer</a></li>
+                    <li><a href="lek6.html">VI: Träning</a></li>
+                    <li><a href="felkallor.html">Felkällor</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+
+        <h2>Vilka program ska jag ladda ner?</h2>
+        <div class="flexbox">
+            <div class="f1 f1lek">
+                <p>- Unity</p> 
+                <a href="https://unity.com/download" target="_blank"><img src="../Bilder/unity-512.png" alt="unity logo"></a>
+                
+            </div>
+            <div class="f2">
+                <p>
+                    För Unity vill du använda dig av Unity Hub vilket enklare styr vilka versioner dina projekt använder sig av. Version 2022.3.18f1 används för Unity projekten under instruktionerna.
+                </p>
+            </div>
+        </div>  
+
+        <div class="flexbox">
+            <div class="f1 f1lek">
+                <p> - Python</p>
+                <a href="https://www.python.org/downloads/" target="_blank"><img src="../Bilder/Python-logo-notext.svg.png" alt="python logo"></a>
+            </div>
+            <div class="f2">
+                <p>
+                    För Python används version 3.12.1. En annan version kommer att specificeras i instruktionen <a href="lek3.html">III: Stegvis konfiguration</a>, dock eftersom den versionen inte kan laddas ner genom Pythons hemsida används 3.12.1 för tillfället.
+                </p>
+            </div>
+        </div>
+
+        <div class="flexbox">
+            <div class="f1 f1lek">
+                <p> - Anaconda</p>
+                <a href="https://www.anaconda.com/" target="_blank"><img src="../Bilder/anaconda.png" alt="anaconda logo"></a>
+            </div>
+            <div class="f2">
+                <p>
+                    Anaconda, specifikt Anaconda Prompt, är den programvara som kontrollerar den virtuella miljö som hanterar alla versioner av paket som ML-Agents använder sig av för att fungera.
+                </p>
+            </div>
+        </div>
+
+        <div class="flexbox">
+            <div class="f1 f1lek">
+                <p> - Git</p>
+                <a href="https://git-scm.com/" target="_blank"><img src="../Bilder/Git.png" alt="git logo"></a>
+            </div>
+            <div class="f2">
+                <p>
+                    Git används för att kunna klona det GitHub repository som håller på ML-Agents, vilket behövs för att träna en agent.
+                </p>
+            </div>
+        </div>
+
+        <div class="flexbox">
+            <div class="f1 f1lek">
+                <p> - Visual Studio Code</p>
+                <a href="https://code.visualstudio.com/" target="_blank"><img src="../Bilder/visual-studio-code-icon.png" alt="vscode logo"></a>
+            </div>
+            <div class="f2">
+                <p>
+                    Visual Studio Code används för den kodning som behövs. Detta kan efter behov bytas ut till en annan mjukvara designad för kodning. Mjukvaran är dock inte ett krav till skillnad från de andra mjukvarorna ovan.
+                </p>
+            </div>
+        </div>
+
+        <p class="comment">
+            Om allt är nedladdat på din maskin är det nu dags att gå vidare. Markera denna lektionen som klar.
+        </p>
+
+        
+
+
+        <form id="integerForm">
+            <input type="number" id="integerInput" name="integerInput" value="2" disabled hidden> 
+            <button type="submit">Markera lektion som klar 👍</button>
+        </form>
+        <script src="../scriptLC.js"></script>
+        <script src="../script.js"></script>
+    </body>
+    <footer class="footer">
+        <p>Ansvarig utgivare: Erik Holmström | Senast uppdaterad: 2024-04-10 | E-post: 05erihol@skola.boras.se</p>
+
+        <p><a href="">Copyright</a></p>
+       
+        <p><a href="../Material/GyarbRL.pdf" target="_blank">Se även ursprunglig inspiration</a></p>
+    </footer>
+</html>

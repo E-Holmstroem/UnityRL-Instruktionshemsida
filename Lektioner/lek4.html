@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>UnityRL</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="../style.css">
+        <link rel="icon" type="image/x-icon" href="../Bilder/rl.png">
+
+        <!--Google fonts-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+        <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+    
+    </head>
+    <body>
+        <header>
+            <h1>IV: Grundläggande kodning</h1>
+            <nav>
+                <ul>
+                    <li><a href="../index.html">Hem</a></li>
+                    <li><a href="lek1.html">I: Installation av Unity</a></li>
+                    <li><a href="lek2.html">II: Övrigt mjukvara</a></li>
+                    <li><a href="lek3.html">III: Stegvis konfiguration</a></li>
+                    <li><a href="lek4.html">IV: Grundläggande kodning</a></li>
+                    <li><a href="lek5.html">V: Miljöer</a></li>
+                    <li><a href="lek6.html">VI: Träning</a></li>
+                    <li><a href="felkallor.html">Felkällor</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+        <h2>Vad behöver jag göra och tänka på för att koda i Unity?</h2>
+        <div class="flexbox">
+            <div class="f3">
+
+        <p>
+Efter att du skapat ett script och är redo att koda i unity behöver du tänka på en del saker. För att enklare visualisera kommer instruktionen anta att en bil ska programmeras.
+<br><br>
+I scripten byggs upp de grundläggande funktioner som agenten ska ha tillgång till. Detta kan innebära allt från att låta den navigera längs x- och z-axeln, tillåta den att hoppa längs y-axeln eller ge den möjligheten att driva en motor till en bil. 
+<br><br>
+Även om agenten vill uppnå mer avancerade beteenden behövs inte den funktionen direkt i koden. Det är istället möjligt att uppnå det beteendet genom att ge agenten verktygen för att skapa det beteendet själv. Nedanför beskrivs det kortfattat vad som ett script behöver innehålla för att det ska funka på en grundläggande nivå. 
+<br><br>
+Detta scriptet är grunden till vad som behövs. Vad olika delar av scriptet betyder förklaras under det angivna kodblocket.
+</p>
+<pre>
+<code>
+    <p>
+    using System.Collections;
+    using System.Collections.Generic;
+    using UnityEngine;
+    using Unity.MLAgents;
+    using Unity.MLAgents.Sensors;
+    using Unity.MLAgents.Actuators;
+    
+    public class NamnPåAgent: Agent
+    {
+    void Start() 
+    {
+    
+    }
+    
+        public override void OnEpisodeBegin() 
+    {
+        
+    }
+    
+    public override void CollectObservations(VectorSensor sensor)
+    {
+    
+    }
+    
+    public override void OnActionReceived(ActionBuffers actionBuffers)
+    {
+    
+    }        
+    
+    }
+</p>
+</code>
+</pre>
+
+<p>
+Ovan angivna script visar tre agent specifika metoder, men även Start() som är en standard unity metod. Vad metoderna OnEpisodeBegin(), CollectObservations() och OnActionRecieved() gör kommer att beskrivas kort. Dock kan dessa metoder konfigureras efter egna behov men används i denna instruktionen för att hjälpa agenten på följande vis.
+<br><br>
+Start() används en gång per simulation när miljön initieras. Instruktionerna använder denna metod för att initiera den komponent som tar hand om agentens fysiska barriär. 
+<br><br>
+OnEpisodeBegin() används varje gång ett nytt träningstillfälle börjar. Följande är exempel på när ett träningstillfälle är över och programmet vill påbörja ett nytt. 
+</p>
+<li class="list">
+    <ul> - Agenten har nått sitt mål</ul>
+    <ul> - Agenten har misslyckats med sitt mål</ul>
+    <ul> - Om den begränsade tiden går ut</ul>
+</li>
+<br>
+<p>
+För att manuellt avsluta ett träningstillfälle används funktionen <strong>EndEpisode()</strong>. När den används kommer nästa träningstillfälle initieras, vilket är när <strong>OnEpisodeBegin()</strong> används.
+<br>
+Denna metod används främst för att nollställa agentens momentum och position så pass att den kan försöka en gång till istället för att spendera tid för att återvända tillbaka till början.
+<br><br>
+<strong>CollectObservations()</strong> används för att ge agenten information om sig själv och omgivningen. Denna metod aktiveras flera gånger per sekund. Observationer kan exempelvis vara hastighet, position och rotation av agenten. Du vill observera något relativt grundläggande då dessa är till hjälp för att ha kontroll över ett fordon. En observation kan läggas till med syntaxen <strong>sensor.AddObservation(n)</strong> (n = variabel som observeras).
+<br><br>
+<strong>OnActionReceived()</strong> används primärt för att tala om för agenten vilka handlingar den kan ta. Detta är möjligt genom att ange följande syntaxen till en variabel, <strong>actionBuffers.ContinousAction[n]</strong> (n = positivt heltal). 
+<br>
+Eftersom även denna metod är kallad flera gånger per sekund kan den användas för att kontrollera specifika tillstånd. Exempel på ett sådant tillstånd är ifall agenten har gjort något den borde eller inte borde ha gjort. När det tillståndet är bemött är det vanligt att ange agenten en belöning eller bestraffning genom syntaxen <strong>SetReward(n)</strong> eller <strong>AddReward(n)</strong> (n = rationellt tal) där ett negativt tal tolkas som en bestraffning medan ett positivt tolkas som en belöning. Skillnaden mellan de två syntaxen är att <strong>SetReward(n)</strong> sätter ett värde för hela träningstillfället. Medan <strong>AddReward(n)</strong> ackumulerar en belöning över ett träningstillfälle eftersom belöningar staplas med denna funktion.
+<br><br>
+
+<div class="parametrar">
+    <p>
+        Parametrar används för att konfigurera agenten till att träna enligt vissa specifika regler. En av dessa regler är <strong>max_steps</strong> vilket anger en övre gräns till hur länge agenten kan träna i en virtuell miljö. Det finns även <strong>summray_freq</strong> vilket anger hur ofta resultaten kring träningen ska skickas till Anaconda Prompt. Siffran i båda dessa tillfällen representeras av steps. 
+        <br><br>
+        För referens tog det vid ett träningstillfälle 25 minuter för agenten att genomföra 100.000 steps. Dock kan denna siffra påverkas kraftigt genom olika metoder, eftersom det vid ett annat tillfälle tog 10 minuter för agenten att nå 100.000 steps. Skillnaden mellan dessa två miljöer var endast antalet agenter som tränade samtidigt. Antalet agenter som tränade då 10 minuter gällde var fyra gånger större än vid 25 minuter. 
+        <br><br>
+        Dessa parametrar konfigureras inuti en fil av typen .yaml och om det önskas finns mer information om specifika parametrar bland GitHub repository ML-Agents dokumentation under rubriken “<a href="https://github.com/Unity-Technologies/ml-agents/blob/develop/docs/Training-Configuration-File.md" target="_blank">Training Configuration File</a>”. 
+    </p>
+</div>
+
+
+</p>
+
+
+
+
+       
+</div></div>
+<br>
+<p class="comment">Om du känner att du lärt dig något kan du markera lektionen som klar</p>
+
+        <form id="integerForm">
+            <input type="number" id="integerInput" name="integerInput" value="4" disabled hidden> 
+            <button type="submit">Markera lektion som klar 👍</button>
+        </form>
+        <script src="../scriptLC.js"></script>
+        <script src="../script.js"></script>
+    </body>
+    <footer class="footer">
+        <p>Ansvarig utgivare: Erik Holmström | Senast uppdaterad: 2024-04-10 | E-post: 05erihol@skola.boras.se</p>
+
+        <p><a href="">Copyright</a></p>
+       
+        <p><a href="../Material/GyarbRL.pdf" target="_blank">Se även ursprunglig inspiration</a></p>
+    </footer>
+</html>

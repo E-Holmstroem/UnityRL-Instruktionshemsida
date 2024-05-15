@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>UnityRL</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="../style.css">
+        <link rel="icon" type="image/x-icon" href="../Bilder/rl.png">
+
+        <!--Google fonts-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+        <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+    
+        <script async src="https://unpkg.com/es-module-shims@1.6.3/dist/es-module-shims.js"></script>
+        <script type="importmap">
+          {
+            "imports": {
+              "three": "https://unpkg.com/three@v0.163.0/build/three.module.js",
+              "three/addons/": "https://unpkg.com/three@v0.163.0/examples/jsm/"
+            }
+          }
+        </script>
+    </head>
+    <body>
+        <header>
+            <h1>VI: Träning</h1>
+            <nav>
+                <ul>
+                    <li><a href="../index.html">Hem</a></li>
+                    <li><a href="lek1.html">I: Installation av Unity</a></li>
+                    <li><a href="lek2.html">II: Övrigt mjukvara</a></li>
+                    <li><a href="lek3.html">III: Stegvis konfiguration</a></li>
+                    <li><a href="lek4.html">IV: Grundläggande kodning</a></li>
+                    <li><a href="lek5.html">V: Miljöer</a></li>
+                    <li><a href="lek6.html">VI: Träning</a></li>
+                    <li><a href="felkallor.html">Felkällor</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+        <h2>Hur tränar jag min agent?</h2>
+            <br>
+            <script type="module" src="../three.js"></script>
+            <div id="model-container"></div>
+            <br>
+            <div id="heading">
+           
+            <div class="border"></div>
+            </div>
+            <div id="progress-container">
+            <div id="progress">Bil laddar...</div>
+            </div>          
+
+        <div class="flexbox">
+            <div class="f3">
+               
+              <p class="comment">This work is based on "( FREE ) Dodge Challenger SRT" (https://sketchfab.com/3d-models/free-dodge-challenger-srt-38a1fd572beb433fa2d26d8c1070c8fa) by SDC PERFORMANCE™️ (https://sketchfab.com/3Duae) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)</p>
+              <p>
+                Ovan visas modellen av en bil som tränat i unity, och för att träna en bil förväntas det en del saker. 
+              </p>
+              <li class="list">
+                  <ul> - En fungerande modell som ska styras</ul>
+                  <ul> - Ett target som agenten ska kunna nå</ul>
+                  <ul> - Och ett script som bestämmer över agentens beteende, när den ska bli belönad/straffad och vilka observationer som den ska ha.</ul>
+              </li>
+              <br>
+              <p>
+                Alternativt kan det även experimenteras med parametrar för att mer specifik utveckla din agent.
+                <br><br>
+                Nedan anges ett komplett script och dess parametrar för en bil att träna i en virtuell miljö. Tänk på att vissa metoder är modellspecifika och funkar inte för alla.
+              </p>
+              <h2>Script:</h2>
+              <pre>
+                <code>
+                    <p>
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using Unity.MLAgents;
+using Unity.MLAgents.Sensors;
+using Unity.MLAgents.Actuators;
+
+public class CarController : Agent
+{
+    private float horizontalInput, verticalInput;
+    private float currentSteerAngle, currentBreakForce;
+    private bool isBreaking;
+    private Rigidbody rBody;
+    private float dis;
+    private float distan;
+
+    // Settings
+    [SerializeField] private float motorForce, breakForce, maxSteerAngle;
+
+    // Wheel Colliders
+    [SerializeField] private WheelCollider frontLeftWheelCollider, frontRightWheelCollider;
+    [SerializeField] private WheelCollider rearLeftWheelCollider, rearRightWheelCollider;
+
+    // Wheels
+    [SerializeField] private Transform frontLeftWheelTransform, frontRightWheelTransform;
+    [SerializeField] private Transform rearLeftWheelTransform, rearRightWheelTransform;
+
+    [SerializeField] private Transform Target;
+
+    private void Start()
+    {
+        rBody = GetComponent<Rigidbody>();
+        Debug.Log("Start");
+    }
+    
+    private void GetInput()
+    {
+        // Steering Input
+        horizontalInput = Input.GetAxis("Horizontal");
+
+        // Acceleration Input
+        verticalInput = Input.GetAxis("Vertical");
+
+        // Breaking Input
+        isBreaking = Input.GetKey(KeyCode.Space);
+    }
+    
+    //CAR FUNCTIONS
+    private void HandleMotor(float verticalInput)
+    {
+        frontLeftWheelCollider.motorTorque = verticalInput * motorForce;
+        frontRightWheelCollider.motorTorque = verticalInput * motorForce;
+        currentBreakForce = isBreaking ? breakForce : 0f;
+    }
+
+    private void ApplyBreaking(float currentBreakForce)
+    {
+        frontRightWheelCollider.brakeTorque = currentBreakForce;
+        frontLeftWheelCollider.brakeTorque = currentBreakForce;
+        rearLeftWheelCollider.brakeTorque = currentBreakForce;
+        rearRightWheelCollider.brakeTorque = currentBreakForce;
+    }
+
+    private void HandleSteering(float horizontalInput)
+    {
+        currentSteerAngle = maxSteerAngle * horizontalInput;
+        frontLeftWheelCollider.steerAngle = currentSteerAngle;
+        frontRightWheelCollider.steerAngle = currentSteerAngle;
+    }
+
+    private void UpdateWheels()
+    {
+        UpdateSingleWheel(frontLeftWheelCollider, frontLeftWheelTransform);
+        UpdateSingleWheel(frontRightWheelCollider, frontRightWheelTransform);
+        UpdateSingleWheel(rearRightWheelCollider, rearRightWheelTransform);
+        UpdateSingleWheel(rearLeftWheelCollider, rearLeftWheelTransform);
+    }
+
+    private void UpdateSingleWheel(WheelCollider wheelCollider, Transform wheelTransform)
+    {
+        Vector3 pos;
+        Quaternion rot;
+        wheelCollider.GetWorldPose(out pos, out rot);
+        wheelTransform.rotation = rot;
+        wheelTransform.position = pos;
+    }
+
+    //COLLITION DETECTION
+    private bool isTouchingSomething = false;
+    private bool isTouchingTarget = false;
+
+    private void OnCollisionStay(Collision collision)
+    {
+        // Check if the car is touching inappropriate object
+        if (collision.gameObject.CompareTag("DoNotHit")) 
+        {
+            isTouchingSomething = true;
+        } 
+        // Check if the car is touching appropriate object
+        if (collision.gameObject.CompareTag("DoHit")){
+            isTouchingTarget = true;
+        }
+
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        // Reset the flag when the car is no longer colliding
+        isTouchingSomething = false;
+        isTouchingTarget = false;
+    }
+
+
+    //AGENT METHODS
+    public override void OnEpisodeBegin()
+    {
+       // If the Agent fell or rolled over, zero its momentum
+        /*if (this.transform.localPosition.y < 0 ||  this.transform.localRotation.eulerAngles.x <= -50f * Mathf.Deg2Rad ||
+    this.transform.localRotation.eulerAngles.x >= 50f * Mathf.Deg2Rad ||
+    this.transform.localRotation.eulerAngles.z <= -50f * Mathf.Deg2Rad ||
+    this.transform.localRotation.eulerAngles.z >= 50f * Mathf.Deg2Rad)
+        {*/
+            Debug.Log(Vector3.Distance(this.transform.localPosition, Target.localPosition));
+            //SetReward(-2f);
+            this.rBody.angularVelocity = Vector3.zero;
+            this.rBody.velocity = Vector3.zero;
+            this.transform.localPosition = new Vector3( 0, 0.5f, 0);
+            this.transform.rotation = new Quaternion( 0, 0, 0, 0);
+        //}
+        // Move the target to a new spot
+        
+        Target.localPosition = new Vector3(UnityEngine.Random.value * 80 - 40,
+                                           0.5f,
+                                           UnityEngine.Random.value * 80 - 40 );
+                                           
+    }
+
+    public override void CollectObservations(VectorSensor sensor)
+    {
+        // Target and Agent positions
+        sensor.AddObservation(Target.localPosition);
+        sensor.AddObservation(this.transform.localPosition);
+        sensor.AddObservation(this.transform.rotation.y);
+        sensor.AddObservation(Vector3.Distance(this.transform.localPosition, Target.localPosition));
+
+        // Agent velocity
+        sensor.AddObservation(rBody.velocity.x);
+        sensor.AddObservation(rBody.velocity.z);
+    }
+
+    public override void OnActionReceived(ActionBuffers actionBuffers)
+    {
+        
+        float verticalInput = actionBuffers.ContinuousActions[0];   // Acceleration
+        float horizontalInput = actionBuffers.ContinuousActions[1]; // Steering
+
+        // Apply the continuous inputs
+        HandleMotor(verticalInput);
+        HandleSteering(horizontalInput);
+
+        // Rewards
+        
+        //AddReward(-1.0f);      
+
+        /*
+        // Distansfunktion 1
+        dis = distan;
+        distan = Vector3.Distance(this.transform.localPosition, Target.localPosition);
+
+        if (dis > distan) {
+            Debug.Log("Getting closer");
+            AddReward(0.01f);
+        }*/
+
+        Debug.Log(Vector3.Distance(this.transform.localPosition, Target.localPosition));
+
+        // Distansfunktion 2 (anvÃ¤ndes aldrig samtidigt som funktion 1)
+        AddReward(13 - Vector3.Distance(this.transform.localPosition, Target.localPosition));
+
+        AddReward(-1f / MaxStep);
+        // Reached target
+        if (isTouchingTarget)
+        {
+            AddReward(1000.0f);
+            /*Target.localPosition = new Vector3(UnityEngine.Random.value * 80 - 40,
+                                           0.5f,
+                                           UnityEngine.Random.value * 80 - 40 );*/
+        }
+
+        // Fell off platform
+        if (this.transform.localPosition.y < -2f)
+        {
+            Debug.Log("hojd fel");
+            AddReward(-2.0f);
+            EndEpisode();
+        }
+
+        // Colliding with object which is not the target
+        if (isTouchingSomething)
+        {
+            Debug.Log("Collision");
+            AddReward(-2.0f);
+            EndEpisode();
+        }
+        if (rBody.velocity.x >= 7 || rBody.velocity.z >=7 || rBody.velocity.x <= -4 || rBody.velocity.z <= -4) 
+        {
+            Debug.Log("speeding");
+            AddReward(-1f);
+        }
+    }
+}
+                </p>
+                </code>
+                </pre>
+
+                <h2>
+                  Parametrar : 
+                </h2>
+                <pre>
+                  <code>
+                      <p>
+                        behaviors: 
+                        CarBehavior: 
+                        trainer_type: ppo 
+                        hyperparameters: 
+                        batch_size: 64 
+                        buffer_size: 2048 
+                        learning_rate: 3.0e-4 
+                        beta: 5.0e-3 
+                        epsilon: 0.2 
+                        lambd: 0.99 
+                        num_epoch: 3 
+                        learning_rate_schedule: linear 
+                        beta_schedule: constant 
+                        epsilon_schedule: linear 
+                        network_settings: normalize: false 
+                        hidden_units: 128 
+                        num_layers: 2 
+                        reward_signals: 
+                        extrinsic: 
+                        gamma: 0.99 
+                        strength: 1.0 
+                        max_steps: 500000 
+                        time_horizon: 64 
+                        summary_freq: 10000
+                        
+                  </p>
+                  </code>
+                  </pre>
+
+                  <p>
+                    Efter att liknande har programmerats för din egna modell kan du påbörja ett träningstillfälle i den virtuella miljön med hjälp av syntaxen <strong>mlagents-learn config/trainer_config.yaml --run-id=my_training_run</strong>. 
+                    <br>
+                    config/trainer_config.yaml byts ut mot den relativa filsökningsvägen till din .yaml fil, fylld med parametrar. ID kan du byta för att identifiera olika träningstillfällen. Ifall du påbörjatt en träning men ska fortsätta från samma punkt lägger du till <strong>--resume</strong> på slutet med samma angivna id. För att avsluta ett träningstillfälle trycker du <strong>ctrl + c</strong> i anaconda prompten.
+                  </p>
+            </div>
+           
+        </div>  
+       
+
+
+        <form id="integerForm">
+            <input type="number" id="integerInput" name="integerInput" value="6" disabled hidden> 
+            <button type="submit">Markera lektion som klar 👍</button>
+        </form>
+        <script src="../scriptLC.js"></script>
+        <script src="../script.js" ></script>
+        
+    </body>
+    <footer class="footer">
+        <p>Ansvarig utgivare: Erik Holmström | Senast uppdaterad: 2024-04-10 | E-post: 05erihol@skola.boras.se</p>
+
+        <p><a href="">Copyright</a></p>
+       
+        <p><a href="../Material/GyarbRL.pdf" target="_blank">Se även ursprunglig inspiration</a></p>
+    </footer>
+</html>

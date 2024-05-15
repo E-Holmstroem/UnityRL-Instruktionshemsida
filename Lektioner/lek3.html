@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>UnityRL</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="icon" type="image/x-icon" href="../Bilder/rl.png">
+
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>III: Stegvis konfigiration</h1>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Hem</a></li>
+                <li><a href="lek1.html">I: Installation av Unity</a></li>
+                <li><a href="lek2.html">II: Övrigt mjukvara</a></li>
+                <li><a href="lek3.html">III: Stegvis konfiguration</a></li>
+                <li><a href="lek4.html">IV: Grundläggande kodning</a></li>
+                <li><a href="lek5.html">V: Miljöer</a></li>
+                <li><a href="lek6.html">VI: Träning</a></li>
+                <li><a href="felkallor.html">Felkällor</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <h2>Hur konfigurerar jag mina program?</h2>
+    <p class="comment">
+        Följande instruktioner gäller efter att tidigare instruktioner avklarats. Om ett steg inte fungerar under instruktionen, hänvisar du till Felkällor.
+    </p>
+    <div class="flexbox">
+        <div class="f3" id="instructions">
+            <p>
+                1. Stäng av brandväggen
+            </p>
+            
+            <p>
+                2. Börja ett Unity projekt med version 2022.3.18f1
+            </p>
+            
+            <p>
+                3. Tryck Window → Package Manager → Unity Registry 
+            </p>
+            
+            <p>
+                4. Sök efter ett paket vid namn ML-Agents och ladda ner paketet till ditt projekt.
+            </p>
+            
+            <p>
+                5. Öppna Anaconda Prompt och navigera till projektet med syntaxen cd [relativ filsökväg]
+                I detta fall gäller följande då namnet på Unity projektet är GyarbRL. 
+            </p>
+            
+            <p>
+                6. Klona in GitHub repository med följande syntax git clone https://github.com/unity-Technologies/ml-agents. Tänk på att hyperlänken kan ändras i framtiden. Hämta därför syntaxen direkt från deras repository.
+            </p>
+            
+            <p>
+                7. Skapa en virtuell miljö med syntaxen conda create -n [namn på miljö] python=3.10.12
+                Det är viktigt att versionen på python är 3.10.12 eftersom den specificeras i ML-Agents dokumentation men inte kan installeras från pythons hemsida. 
+            </p>
+            
+            <p>
+                8. Aktivera den virtuella miljön genom syntaxen conda activate [namn på miljö]
+            </p>
+            
+            <p>
+                9. Uppgradera pip med syntaxen python.exe -m pip install –upgrade pip
+            </p>
+            
+            <p>
+                10. Uppgradera setuptools med syntaxen pip3 install –upgrade setuptools
+            </p>
+            
+            <p>
+                11. Installera numpy 1.21.2 med syntaxen conda install numpy=1.21.2
+                Återigen är versionen viktig eftersom den specificeras i ML-Agents dokumentation.
+            </p>
+            
+            <p>
+                12. Installera mlagents med syntaxen conda install mlagents
+            </p>
+            
+            <p>
+                13. För att försäkra att miljön är konfigurerad kan du skriva syntaxen mlagents-learn --help. Om en lista med olika konfigurationer på syntaxen mlagents-learn framkommer är miljön redo för att påbörja träning. Det som återstår är att skapa en agent som ska tränas.
+            </p>
+            
+            <p>
+                14. Om listan med konfigurationer inte framkommer. Radera miljön du nyss skapat för att sedan bygga upp den på nytt en gång till, eller hänvisa till felkällor för att fixa problemet. En virtuell miljö och dess paket raderas genom syntaxen conda remove --name [namn på miljö] --all.
+            </p>
+        </div>
+    </div>  
+
+    <footer class="footer">
+        <p>Ansvarig utgivare: Erik Holmström | Senast uppdaterad: 2024-04-10 | E-post: 05erihol@skola.boras.se</p>
+        <p><a href="">Copyright</a></p>
+        <p><a href="../Material/GyarbRL.pdf" target="_blank">Se även ursprunglig inspiration</a></p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Get all paragraphs containing instructions
+            var instructions = document.querySelectorAll("#instructions p");
+            var checkboxes = [];
+    
+            // Retrieve stored checkbox states
+            for (var i = 0; i < instructions.length; i++) {
+                var checkbox = document.createElement("input");
+                checkbox.type = "checkbox";
+                checkbox.id = "step-" + (i + 1);
+                checkbox.checked = localStorage.getItem("step-" + (i + 1)) === "true"; // Check if stored value is "true"
+                instructions[i].parentNode.insertBefore(checkbox, instructions[i]);
+                instructions[i].parentNode.insertBefore(document.createElement("br"), instructions[i]); // Add line break
+    
+                checkboxes.push(checkbox);
+    
+                // Apply completed class to instructions with checked checkboxes
+                if (checkbox.checked) {
+                    instructions[i].classList.add("completed");
+                }
+    
+                // Add event listener to update class when checkbox state changes
+                checkbox.addEventListener("change", createChangeListener(instructions[i], checkbox));
+            }
+    
+            function createChangeListener(instruction, checkbox) {
+                return function() {
+                    if (checkbox.checked) {
+                        instruction.classList.add("completed");
+                    } else {
+                        instruction.classList.remove("completed");
+                    }
+                    localStorage.setItem(checkbox.id, checkbox.checked); // Store checkbox state
+                    checkAllChecked();
+                };
+            }
+    
+            function checkAllChecked() {
+                var allChecked = checkboxes.every(function(checkbox) {
+                    return checkbox.checked;
+                });
+    
+                if (allChecked) {
+                    alert("Nu borde du ha all fungerande programvara");
+                    localStorage.setItem("completedLesson", 3); // Change '3' to the completed lesson number
+                    window.location.href = "../index.html";
+                }
+            }
+        });
+    </script>
+    
+    <script src="../script.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+

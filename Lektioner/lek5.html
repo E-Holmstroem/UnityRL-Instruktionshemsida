@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>UnityRL</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="../style.css">
+        <link rel="icon" type="image/x-icon" href="../Bilder/rl.png">
+
+        <!--Google fonts-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+        <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+    
+    </head>
+    <body>
+        <header>
+            <h1>V: Miljöer</h1>
+            <nav>
+                <ul>
+                    <li><a href="../index.html">Hem</a></li>
+                    <li><a href="lek1.html">I: Installation av Unity</a></li>
+                    <li><a href="lek2.html">II: Övrigt mjukvara</a></li>
+                    <li><a href="lek3.html">III: Stegvis konfiguration</a></li>
+                    <li><a href="lek4.html">IV: Grundläggande kodning</a></li>
+                    <li><a href="lek5.html">V: Miljöer</a></li>
+                    <li><a href="lek6.html">VI: Träning</a></li>
+                    <li><a href="felkallor.html">Felkällor</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+        <h2>Vad behöver jag göra och tänka på för att skapa miljöer i Unity?</h2>
+        <div class="flexbox">
+            <div class="f1">
+               <p>
+                    Du kan skapa olika objekt i unity miljön genom att trycka på ett + uppe till vänster. Därefter finns flertal val att göra. 3D Object är det som används för fysiska objekt i världen. På Bilden visas det hur en kub bildas.
+               </p>
+              
+
+            </div>
+            <div class="f2">
+                <img src="../Bilder/unity_kub.png" alt="skapa en kub i unity">
+            </div>
+        </div>  
+
+        <div class="flexbox">
+            <div class="f1">
+                <p>Objekt kan formas med hjälp av transform uppe till höger. Viktigaste för utseendet av kuben bestäms av <strong>scale</strong> som när angiven värdena x:20 y:5 z:1 resulterar i följande. X och Z bestämmer bredd och längd, medan Y bestämmer för höjd.</p>
+            </div>
+            <div class="f2">
+                <img src="../Bilder/unity_scale.png" alt="ändra form på en kub">
+                <img src="../Bilder/unity_andradkub.png" alt="en ändrad kub">
+            </div>
+        </div>
+       
+
+
+        <form id="integerForm">
+            <input type="number" id="integerInput" name="integerInput" value="5" disabled hidden> 
+            <button type="submit">Markera lektion som klar 👍</button>
+        </form>
+        <script src="../scriptLC.js"></script>
+        <script src="../script.js"></script>
+    </body>
+    <footer class="footer">
+        <p>Ansvarig utgivare: Erik Holmström | Senast uppdaterad: 2024-04-10 | E-post: 05erihol@skola.boras.se</p>
+
+        <p><a href="">Copyright</a></p>
+       
+        <p><a href="../Material/GyarbRL.pdf" target="_blank">Se även ursprunglig inspiration</a></p>
+    </footer>
+</html>

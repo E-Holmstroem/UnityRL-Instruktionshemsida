@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>UnityRL</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="../style.css">
+        <link rel="icon" type="image/x-icon" href="../Bilder/rl.png">
+
+
+        <!--Google fonts-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+        <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+    
+    </head>
+    <body>
+        <header>
+            <h1>Felkällor</h1>
+            <nav>
+                <ul>
+                    <li><a href="../index.html">Hem</a></li>
+                    <li><a href="lek1.html">I: Installation av Unity</a></li>
+                    <li><a href="lek2.html">II: Övrigt mjukvara</a></li>
+                    <li><a href="lek3.html">III: Stegvis konfiguration</a></li>
+                    <li><a href="lek4.html">IV: Grundläggande kodning</a></li>
+                    <li><a href="lek5.html">V: Miljöer</a></li>
+                    <li><a href="lek6.html">VI: Träning</a></li>
+                    <li><a href="felkallor.html">Felkällor</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+        <h2>När instruktioner inte lyckats kan följande tips vara till hjälp</h2>
+        <div class="flexbox">
+            <div class="f3">
+                <p>
+                    Stäng av brandväggen. Eftersom mjukvaran arbetar nära roten av dina filer kan brandväggen se det som ett skadligt program och därför blockera processen.
+                </p>
+                <p>
+                    Används ett offentligt nätverk vid installation av paket eller mjukvara kan det finnas blockage för vissa delar av programmen. Exempelvis kan Anaconda Prompt inte installeras då Anaconda installeras. 
+                </p>
+                <p>
+                    Filer och andra mjukvaror som ligger på datorn kan störa programmet under installationen. Säkerställ att din filsökväg är tillgänglig för programmet för att hålla en ren arbetsbänk att arbeta med. Ifall inget funkar kan en virtuell dator användas.
+                </p>
+                <p> 
+                    Kontrollera att den virtuella miljön är baserad på python version 3.10.12. Syntaxen  python --version borde ge följande resultat. 
+                </p>
+                <p>
+                    Var säker på att syntaxen är skriven inuti en virtuell miljö eftersom att det är miljöns version som är relevant. För att öppna den virtuella miljön skriver du syntaxen conda activate [namn på miljö].
+                </p>
+                <p>
+                    Kontrollera att versionen på numpy är 1.21.2. Detta kan ha ändrats ifall paket utanför de ovan nämnda har installerats. Det som borde finnas i miljön är pip, setuptools, mlagents och numpy. Ifall avinstallation av onödiga paket eller återinstallation av krävda paket inte löser problemet följs processen för att ta bort och sedan installera miljön. Processen beskrivs mot slutet av <a href="lek3.html">III: Stegvis konfiguration</a>. 
+                </p>
+                <p>
+                    Möts problem utöver vad dessa tips kan lösa, hänvisades diskussioner hållna på GitHub repository ML-Agents issues tab för att hitta och möjligtvis lösa problem.
+                </p>
+                <p> 
+                    Användning av tjänsten ChatGPT kan även ge insyn till problem. Men eftersom den data ChatGPT baserar sina svar på är från år 2021 (Nuvarande datum 2024-01-28) kan svaren vara daterade eller vilseledande. ChatGPT är dock värt att ge en chans då ML-Agents släpptes för första gången år 2017.
+                </p>
+                
+              
+
+            </div>
+        </div>  
+       
+
+
+        <script src="../script.js" ></script>
+    </body>
+    <footer class="footer">
+        <p>Ansvarig utgivare: Erik Holmström | Senast uppdaterad: 2024-04-10 | E-post: 05erihol@skola.boras.se</p>
+
+        <p><a href="">Copyright</a></p>
+       
+        <p><a href="../Material/GyarbRL.pdf" target="_blank">Se även ursprunglig inspiration</a></p>
+    </footer>
+</html>

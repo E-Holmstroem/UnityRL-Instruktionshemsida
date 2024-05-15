@@ -1,0 +1,291 @@
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "verdana", Arial, sans-serif; /* Set font family */
+    overflow: auto;
+}
+
+p {
+    font-size: 1rem;
+    /*font-size: 16px; /* Set font size */
+    line-height: 1.5; /* Set line height */
+    margin: 0 20px; /* Add margin to the sides */
+    padding: 10px; /* Add padding */
+    color: whitesmoke; /* Set text color */
+}
+
+.list ul {
+    font-size: 1rem;
+    /*font-size: 16px; /* Set font size */
+    line-height: 1.5; /* Set line height */
+    margin: 0 20px; /* Add margin to the sides */
+    padding: 10px; /* Add padding */
+    color: whitesmoke; /* Set text color */
+}
+
+h1 {
+    font-family: "Pixelify sans", sans-serif;
+}
+
+h2 {
+    background-color: #274575;
+    text-align: center;
+    color: #fff;
+}
+
+h3 {
+    color: #fff;
+    text-align: center;
+}
+
+/* Basic Styling */
+body {
+    font-family: Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    /*background-color: #f4f4f4;*/
+    background-color: #333;
+    color: #333;
+    min-height: 100vh;
+
+}
+
+/*Header*/
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 1rem;
+}
+
+header nav ul {
+    list-style-type: none;
+}
+
+header nav ul li {
+    display: inline;
+    margin-right: 20px;
+    
+}
+
+header nav ul li a {
+    display: inline-block;
+    color: white;
+    padding: 1em; /* Adjust padding as needed */
+    text-decoration: none; /* Remove underline */
+    background-image: linear-gradient(to right, #333 0%, #222 100%);
+    background-size: 0% 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.2s ease; /* Smooth transition */
+    border-radius: 0.5em; 
+}
+
+header nav ul li a:hover {
+    
+    background-size: 100% 100%; /* Fill from left to right on ho*/
+    transition: background-size 0.2s ease; /* Smooth transition */
+    
+}
+
+main {
+    padding: 20px;
+}
+
+/*Konfiguration för bilder*/
+.f1 a {
+    width: 3em;
+    height: auto;
+    margin-left: auto;
+    margin-right: 1em;
+}
+
+
+/*Sida vid sida konfiuration*/
+.flexbox {
+    display: flex;
+    /*max-width: 1875px*/
+}
+
+.f1 {
+    flex: 1;
+    background-color: #203962;
+    color: white;
+}
+
+.f1lek {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.f2 {
+    flex: 1;
+    background-color: #333;
+    color: #fff;
+}
+
+.f3 {
+        width: 80%; 
+        /*height: 100vh; /* 100% of the viewport height */
+        background-color: #203962;
+        margin: 0 auto; /* Centers the block horizontally */
+      
+      
+}
+
+.comment {
+    text-align: center;
+    background-color: blueviolet;
+}
+
+.parametrar {
+    background-color: #2b4e85;
+}
+
+pre {
+    background-color: black;
+}
+
+video {
+    width: 100%;
+    height: auto;
+    
+    /* Add additional styles as needed */
+}
+
+iframe {
+    width: 100%;
+    height: 100vh;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+
+/* Additional styling for check buttons */
+input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+/* Style for checked custom check buttons */
+input[type="checkbox"]:checked {
+    background-color: #274575; /* Change background color of checked checkboxes */
+}
+
+/* Additional styling for completed instructions */
+.completed {
+    color: #fff; /* Change text color of completed instructions */
+    text-decoration: line-through; /* Add strikethrough to completed instructions */
+}
+
+/* Additional styling for completed navigation items */
+.completed a {
+    color: #6aff6a; /* Change color of completed navigation items */
+    background-color: #16421f;
+}
+
+
+
+
+/*Styling för formen att klara av lektion*/
+/* Form Styling */
+form {
+    margin: 20px auto;
+    max-width: 400px;
+}
+
+button[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #274575;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #203962;
+}
+
+
+
+#model-container {
+    justify-content: center;
+    display: flex;
+}
+
+
+
+
+
+
+/* Media query for portrait mode */
+@media (max-width: 768px) {
+    .flexbox {
+        flex-direction: column; /* Change to column layout */
+    }
+
+    .f1 {
+        margin-right: 0; /* Remove margin for spacing */
+       
+    }
+
+    .f2 {
+        order: 1; /* Move the video to the top */
+    }
+    .f3 {
+    
+        width: 100%;
+    }
+
+    video {
+        margin: 0;
+    }
+
+    header nav ul {
+        position: relative; /* Position the dropdown menu */
+        
+        left: 0;
+        width: 100%;
+        background-color: #333; /* Background color for the dropdown menu */
+    }
+
+    header nav ul li {
+        display: block; /* Display list items as block */
+        text-align: center; /* Center-align the text */
+        margin: 0;
+    }
+
+    header nav ul li a {
+        display: block; /* Display links as block */
+        padding: 1em; /* Add padding */
+    }
+
+    /* Show the dropdown menu when hovering over the header */
+    header:hover nav ul {
+        display: block;
+    }
+}
+
+
+
+
+/* Footer */
+footer {
+    background-color: #333339;
+    text-align: center;
+    padding: 1rem;
+}
+
+.footer p, .footer a {
+    color: #fff;
+}
+
+
