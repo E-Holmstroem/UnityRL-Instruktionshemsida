@@ -16,13 +16,8 @@ p {
     color: whitesmoke; /* Set text color */
 }
 
-.list ul {
-    font-size: 1rem;
-    /*font-size: 16px; /* Set font size */
-    line-height: 1.5; /* Set line height */
-    margin: 0 20px; /* Add margin to the sides */
-    padding: 10px; /* Add padding */
-    color: whitesmoke; /* Set text color */
+a {
+    color: plum;
 }
 
 h1 {
@@ -142,8 +137,29 @@ main {
     background-color: #2b4e85;
 }
 
+.code-container {
+    margin: 1em 0;
+}
+.code-title {
+    cursor: pointer;
+    background-color: #222;
+    padding: 0.5em;
+    color: white;
+}
+.code-content {
+    display: none;
+    padding: 1em;
+    background-color: #274575;
+    overflow: auto;
+}
+.code-content pre {
+    margin: 0;
+    
+}
+
 pre {
     background-color: black;
+    color: white;
 }
 
 video {

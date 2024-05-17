@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html>
+<html lang="sv">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,7 +15,6 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
         <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
-    
     </head>
     <body>
         <header>
@@ -30,6 +29,7 @@
                     <li><a href="lek5.html">V: Miljöer</a></li>
                     <li><a href="lek6.html">VI: Träning</a></li>
                     <li><a href="felkallor.html">Felkällor</a></li>
+                    <li><a href="../upphavsratt.html">Upphovsrätt</a></li>
                 </ul>
             </nav>
         </header>
@@ -49,7 +49,7 @@ Detta scriptet är grunden till vad som behövs. Vad olika delar av scriptet bet
 </p>
 <pre>
 <code>
-    <p>
+
     using System.Collections;
     using System.Collections.Generic;
     using UnityEngine;
@@ -80,7 +80,7 @@ Detta scriptet är grunden till vad som behövs. Vad olika delar av scriptet bet
     }        
     
     }
-</p>
+
 </code>
 </pre>
 
@@ -90,14 +90,13 @@ Ovan angivna script visar tre agent specifika metoder, men även Start() som är
 Start() används en gång per simulation när miljön initieras. Instruktionerna använder denna metod för att initiera den komponent som tar hand om agentens fysiska barriär. 
 <br><br>
 OnEpisodeBegin() används varje gång ett nytt träningstillfälle börjar. Följande är exempel på när ett träningstillfälle är över och programmet vill påbörja ett nytt. 
-</p>
-<li class="list">
-    <ul> - Agenten har nått sitt mål</ul>
-    <ul> - Agenten har misslyckats med sitt mål</ul>
-    <ul> - Om den begränsade tiden går ut</ul>
-</li>
+<br><br>
+
+    - Agenten har nått sitt mål <br><br>
+    - Agenten har misslyckats med sitt mål <br><br>
+    - Om den begränsade tiden går ut <br>
+
 <br>
-<p>
 För att manuellt avsluta ett träningstillfälle används funktionen <strong>EndEpisode()</strong>. När den används kommer nästa träningstillfälle initieras, vilket är när <strong>OnEpisodeBegin()</strong> används.
 <br>
 Denna metod används främst för att nollställa agentens momentum och position så pass att den kan försöka en gång till istället för att spendera tid för att återvända tillbaka till början.
@@ -120,7 +119,6 @@ Eftersom även denna metod är kallad flera gånger per sekund kan den användas
 </div>
 
 
-</p>
 
 
 
@@ -134,14 +132,16 @@ Eftersom även denna metod är kallad flera gånger per sekund kan den användas
             <input type="number" id="integerInput" name="integerInput" value="4" disabled hidden> 
             <button type="submit">Markera lektion som klar 👍</button>
         </form>
+
         <script src="../scriptLC.js"></script>
         <script src="../script.js"></script>
-    </body>
-    <footer class="footer">
-        <p>Ansvarig utgivare: Erik Holmström | Senast uppdaterad: 2024-04-10 | E-post: 05erihol@skola.boras.se</p>
 
-        <p><a href="">Copyright</a></p>
-       
-        <p><a href="../Material/GyarbRL.pdf" target="_blank">Se även ursprunglig inspiration</a></p>
-    </footer>
+        <footer class="footer">
+            <p>Ansvarig utgivare: Erik Holmström | Senast uppdaterad: 2024-04-10 | E-post: 05erihol@skola.boras.se</p>
+    
+            <p><a href="../upphavsratt.html">Upphovsrätt</a></p>
+           
+            <p><a href="../Material/GyarbRL.pdf" target="_blank">Se även ursprunglig inspiration</a></p>
+        </footer>
+    </body>
 </html>

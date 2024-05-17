@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="sv">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -27,6 +27,7 @@
                 <li><a href="lek5.html">V: Miljöer</a></li>
                 <li><a href="lek6.html">VI: Träning</a></li>
                 <li><a href="felkallor.html">Felkällor</a></li>
+                <li><a href="../upphavsratt.html">Upphovsrätt</a></li>
             </ul>
         </nav>
     </header>
@@ -98,65 +99,15 @@
         </div>
     </div>  
 
+    
+    <script src="../bocklada.js"></script>
+    <script src="../script.js"></script>
+
     <footer class="footer">
         <p>Ansvarig utgivare: Erik Holmström | Senast uppdaterad: 2024-04-10 | E-post: 05erihol@skola.boras.se</p>
-        <p><a href="">Copyright</a></p>
+        <p><a href="../upphavsratt.html">Upphovsrätt</a></p>
         <p><a href="../Material/GyarbRL.pdf" target="_blank">Se även ursprunglig inspiration</a></p>
     </footer>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            // Get all paragraphs containing instructions
-            var instructions = document.querySelectorAll("#instructions p");
-            var checkboxes = [];
-    
-            // Retrieve stored checkbox states
-            for (var i = 0; i < instructions.length; i++) {
-                var checkbox = document.createElement("input");
-                checkbox.type = "checkbox";
-                checkbox.id = "step-" + (i + 1);
-                checkbox.checked = localStorage.getItem("step-" + (i + 1)) === "true"; // Check if stored value is "true"
-                instructions[i].parentNode.insertBefore(checkbox, instructions[i]);
-                instructions[i].parentNode.insertBefore(document.createElement("br"), instructions[i]); // Add line break
-    
-                checkboxes.push(checkbox);
-    
-                // Apply completed class to instructions with checked checkboxes
-                if (checkbox.checked) {
-                    instructions[i].classList.add("completed");
-                }
-    
-                // Add event listener to update class when checkbox state changes
-                checkbox.addEventListener("change", createChangeListener(instructions[i], checkbox));
-            }
-    
-            function createChangeListener(instruction, checkbox) {
-                return function() {
-                    if (checkbox.checked) {
-                        instruction.classList.add("completed");
-                    } else {
-                        instruction.classList.remove("completed");
-                    }
-                    localStorage.setItem(checkbox.id, checkbox.checked); // Store checkbox state
-                    checkAllChecked();
-                };
-            }
-    
-            function checkAllChecked() {
-                var allChecked = checkboxes.every(function(checkbox) {
-                    return checkbox.checked;
-                });
-    
-                if (allChecked) {
-                    alert("Nu borde du ha all fungerande programvara");
-                    localStorage.setItem("completedLesson", 3); // Change '3' to the completed lesson number
-                    window.location.href = "../index.html";
-                }
-            }
-        });
-    </script>
-    
-    <script src="../script.js"></script>
 </body>
 </html>
 
